@@ -39,8 +39,22 @@ Or: `npm install --save graphql-zealot`.
 -   [AddTo](#addto)
 -   [addEdge](#addedge)
 -   [addEdgeToFragment](#addedgetofragment)
+-   [removeEdge](#removeedge)
+-   [removeEdgeFromFragment](#removeedgefromfragment)
+-   [replaceEdgeInFragment](#replaceedgeinfragment)
+-   [replaceEdge](#replaceedge)
+-   [cursorForObjectInConnection](#cursorforobjectinconnection)
+-   [getContentTypeFromFilename](#getcontenttypefromfilename)
+-   [getTypenameForFile](#gettypenameforfile)
+-   [formValues](#formvalues)
+-   [isEmpty](#isempty)
+-   [isEmptyProp](#isemptyprop)
+-   [isEmptyPath](#isemptypath)
+-   [isOptimistic](#isoptimistic)
 
 ### AddTo
+
+[src/apollo.js:19-19](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/apollo.js#L15-L18 "Source code on GitHub")
 
 Direction to add to in a list.
 Either "head" or "tail"
@@ -48,6 +62,8 @@ Either "head" or "tail"
 Type: (`"head"` \| `"tail"`)
 
 ### addEdge
+
+[src/apollo.js:32-47](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/apollo.js#L32-L47 "Source code on GitHub")
 
 Returns a function that will use Apollo's DataProxy to update
 a Query by adding an edge to a list of edges.
@@ -63,18 +79,19 @@ Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference
 
 ### addEdgeToFragment
 
+[src/apollo.js:75-108](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/apollo.js#L75-L108 "Source code on GitHub")
+
 Returns a function that will use Apollo's DataProxy to update
 a Fragment by adding an edge to a list of edges.
 
 **Parameters**
 
--   `fragment` **DocumentNode** 
+-   `fragment` **DocumentNode** GraphQL fragment constructed with `graphql-tag`
 -   `operationName` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Mutation name
 -   `edgePath` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** An array to a path to the list of edges
--   `rootId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `rootId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The root ID for this fragment
 -   `addTo` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Whether to add the new edge to the beginning or end of the list
 -   `fragmentOptions` **(DataProxyReadFragmentOptions | DataProxyWriteFragmentOptions)**  (optional, default `{}`)
--   `query`  GraphQL fragment constructed with `graphql-tag`
 
 **Examples**
 
@@ -89,19 +106,159 @@ a Fragment by adding an edge to a list of edges.
     'head',
     {
       fragmentName: 'Favorites',
-    })
+    }
+  ),
 }
 ```
 
 Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** A function that it's passed to Apollo's update function.
 
+### removeEdge
+
+[src/apollo.js:119-147](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/apollo.js#L119-L147 "Source code on GitHub")
+
+Remove an edge from a list
+
+**Parameters**
+
+-   `edgePath` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** 
+-   `edgeId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `data` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+-   `payload` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+Returns **any** 
+
+### removeEdgeFromFragment
+
+[src/apollo.js:159-184](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/apollo.js#L159-L184 "Source code on GitHub")
+
+Remove edge from a list in Fragment
+
+**Parameters**
+
+-   `fragment` **DocumentNode** 
+-   `edgeId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `rootId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `edgePath` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** 
+-   `fragmentOptions` **(DataProxyReadFragmentOptions | DataProxyWriteFragmentOptions)** 
+
+Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** 
+
+### replaceEdgeInFragment
+
+[src/apollo.js:223-232](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/apollo.js#L223-L232 "Source code on GitHub")
+
+Replaces an edge in a Fragment
+
+**Parameters**
+
+-   `edge` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+-   `fragment` **DocumentNode** 
+-   `rootId` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+-   `edgePath` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** 
+
+Returns **any** 
+
+### replaceEdge
+
+[src/connection.js:38-55](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/connection.js#L38-L55 "Source code on GitHub")
+
+Replaces an edge in a list
+
+**Parameters**
+
+-   `data` **any** 
+-   `edgePath` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** 
+-   `edge` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+Returns **any** 
+
+### cursorForObjectInConnection
+
+[src/connection.js:64-79](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/connection.js#L64-L79 "Source code on GitHub")
+
+Modified version of cursorForObjectInConnection which uses primary ID as well
+
+**Parameters**
+
+-   `connection` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)>** 
+-   `obj` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+
+Returns **any** 
+
+### getContentTypeFromFilename
+
+[src/files.js:26-29](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/files.js#L26-L29 "Source code on GitHub")
+
+Return a content type from a filename, uses `mime`.
+
+**Parameters**
+
+-   `filename` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** ContentType
+
+### getTypenameForFile
+
+[src/files.js:37-48](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/files.js#L37-L48 "Source code on GitHub")
+
+Convert a content-type to a valid GraphQL scbema type
+
+**Parameters**
+
+-   `file` **{contentType: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)}** 
+
+Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Image, Video, Audio if content type matches, GenericFile otherwise
+
+### formValues
+
+[src/forms.js:7-9](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/forms.js#L7-L9 "Source code on GitHub")
+
+Return values for `obj` ommiting `id` and `__typename`.
+
+### isEmpty
+
+[src/isEmpty.js:18-18](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/isEmpty.js#L18-L18 "Source code on GitHub")
+
+-   **See: Ramda's isEmpty**
+
+Returns true whether the arguments is nil or and empty string
+
+Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
+
+### isEmptyProp
+
+[src/isEmpty.js:24-26](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/isEmpty.js#L24-L26 "Source code on GitHub")
+
+Returns whether a prop `isEmpty`
+
+Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
+
+### isEmptyPath
+
+[src/isEmpty.js:32-34](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/isEmpty.js#L32-L34 "Source code on GitHub")
+
+Returns whether the given Ramda path `isEmpty`
+
+Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
+
+### isOptimistic
+
+[src/isOptimistic.js:14-14](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/isOptimistic.js#L14-L14 "Source code on GitHub")
+
+Returns true is a given string is an UUID.
+
+UUIDs are commonly used to mark optimistic responses.
+
+Type: function ([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)): [boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)
+
 ## Developing
 
 ### Built With
 
-* Ramda 
-* Apollo
-* GraphQL
+-   Ramda 
+-   Apollo
+-   GraphQL
 
 ### Pre-requisites
 
@@ -142,7 +299,6 @@ yarn test
 
 We base our code style on [AirBnB's style guide][airbnb-style] and we check with 
 [ESLint][eslint] and automatically format our code with [Prettier][prettier].
-
 
 ## License
 

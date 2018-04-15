@@ -1,0 +1,8 @@
+node_modules
+coverage
+dist
+lib
+es
+docs
+flow-typed
+wallaby.config.js

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`optimisticResponse adds an optimistic response shape to the given object 1`] = `
+Object {
+  "__typename": "Mutation",
+  "createUser": Object {
+    "__typename": "CreateUserPayload",
+    "name": "Foo",
+  },
+}
+`;
+
+exports[`optimisticResponse can accept a function to generate the response which is passed variables 1`] = `
+Object {
+  "__typename": "Mutation",
+  "createUser": Object {
+    "__typename": "CreateUserPayload",
+    "id": 1,
+    "name": "Foo",
+  },
+}
+`;

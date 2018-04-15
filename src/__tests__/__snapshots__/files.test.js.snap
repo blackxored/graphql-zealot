@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`files optimisticFileResponse returns an optimistic response shape for a file 1`] = `
+Object {
+  "__typename": "Image",
+  "contentType": "image/jpeg",
+  "name": "foo.jpg",
+  "size": 2000,
+  "url": "file://foo.jpg",
+}
+`;

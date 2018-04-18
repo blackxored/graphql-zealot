@@ -25,7 +25,7 @@
     "build": "npm-run-all --parallel build:*",
     "build:cjs": "cross-env BABEL_ENV=cjs babel src -q -d lib --ignore \"**/__tests__/**\"",
     "build:es": "cross-env BABEL_ENV=es babel src -q -d es --ignore \"**/__tests__/**\"",
-    "build:docs": "documentation build --document-exported --project-version latest -g -f html src/index.js -o docs/",
+    "build:docs": "documentation build --project-version latest -f html -g -o docs/ src/index.js",
     "update-readme-docs": "documentation readme src/index.js -s \"API Reference\" --github",
     "clean": "npm-run-all --parallel clean:*",
     "clean:build": "rimraf es lib",

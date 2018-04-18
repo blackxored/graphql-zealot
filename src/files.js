@@ -47,6 +47,12 @@ export const getTypenameForFile = (file: { contentType: string }) => {
   )(file);
 };
 
+/**
+ * Returns an optimistic response for a File for instant display
+ *
+ * @param file
+ * @returns {*}
+ */
 export const optimisticFileResponse = (file: {
   contentType: string,
   name: string,

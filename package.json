@@ -25,6 +25,7 @@
     "build:cjs": "cross-env BABEL_ENV=cjs babel src -q -d lib --ignore \"**/__tests__/**\"",
     "build:es": "cross-env BABEL_ENV=es babel src -q -d es --ignore \"**/__tests__/**\"",
     "build:docs": "documentation build --document-exported --project-version latest -g -f html src/index.js -o docs/",
+    "update-readme-docs": "documentation readme src/index.js -s \"API Reference\" --github",
     "clean": "npm-run-all --parallel clean:*",
     "clean:build": "rimraf es lib",
     "precommit": "lint-staged",

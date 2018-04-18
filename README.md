@@ -46,15 +46,21 @@ Or: `npm install --save graphql-zealot`.
 -   [cursorForObjectInConnection](#cursorforobjectinconnection)
 -   [getContentTypeFromFilename](#getcontenttypefromfilename)
 -   [getTypenameForFile](#gettypenameforfile)
+-   [optimisticFileResponse](#optimisticfileresponse)
 -   [formValues](#formvalues)
 -   [isEmpty](#isempty)
 -   [isEmptyProp](#isemptyprop)
 -   [isEmptyPath](#isemptypath)
 -   [isOptimistic](#isoptimistic)
+-   [addEdgeToMutationResult](#addedgetomutationresult)
+-   [addEdgeAndCursorToMutationResult](#addedgeandcursortomutationresult)
+-   [optimisticResponse](#optimisticresponse)
+-   [mapEdgesToProp](#mapedgestoprop)
+-   [flattenEdges](#flattenedges)
 
 ### AddTo
 
-[src/apollo.js:19-19](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/apollo.js#L15-L18 "Source code on GitHub")
+[src/apollo.js:19-19](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/apollo.js#L15-L18 "Source code on GitHub")
 
 Direction to add to in a list.
 Either "head" or "tail"
@@ -63,7 +69,7 @@ Type: (`"head"` \| `"tail"`)
 
 ### addEdge
 
-[src/apollo.js:32-47](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/apollo.js#L32-L47 "Source code on GitHub")
+[src/apollo.js:32-47](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/apollo.js#L32-L47 "Source code on GitHub")
 
 Returns a function that will use Apollo's DataProxy to update
 a Query by adding an edge to a list of edges.
@@ -79,7 +85,7 @@ Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference
 
 ### addEdgeToFragment
 
-[src/apollo.js:75-108](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/apollo.js#L75-L108 "Source code on GitHub")
+[src/apollo.js:75-108](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/apollo.js#L75-L108 "Source code on GitHub")
 
 Returns a function that will use Apollo's DataProxy to update
 a Fragment by adding an edge to a list of edges.
@@ -115,7 +121,7 @@ Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference
 
 ### removeEdge
 
-[src/apollo.js:119-147](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/apollo.js#L119-L147 "Source code on GitHub")
+[src/apollo.js:119-147](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/apollo.js#L119-L147 "Source code on GitHub")
 
 Remove an edge from a list
 
@@ -130,7 +136,7 @@ Returns **any**
 
 ### removeEdgeFromFragment
 
-[src/apollo.js:159-184](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/apollo.js#L159-L184 "Source code on GitHub")
+[src/apollo.js:159-184](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/apollo.js#L159-L184 "Source code on GitHub")
 
 Remove edge from a list in Fragment
 
@@ -146,7 +152,7 @@ Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference
 
 ### replaceEdgeInFragment
 
-[src/apollo.js:223-232](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/apollo.js#L223-L232 "Source code on GitHub")
+[src/apollo.js:223-232](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/apollo.js#L223-L232 "Source code on GitHub")
 
 Replaces an edge in a Fragment
 
@@ -161,7 +167,7 @@ Returns **any**
 
 ### replaceEdge
 
-[src/connection.js:38-55](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/connection.js#L38-L55 "Source code on GitHub")
+[src/connection.js:38-55](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/connection.js#L38-L55 "Source code on GitHub")
 
 Replaces an edge in a list
 
@@ -175,7 +181,7 @@ Returns **any**
 
 ### cursorForObjectInConnection
 
-[src/connection.js:64-79](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/connection.js#L64-L79 "Source code on GitHub")
+[src/connection.js:64-79](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/connection.js#L64-L79 "Source code on GitHub")
 
 Modified version of cursorForObjectInConnection which uses primary ID as well
 
@@ -188,7 +194,7 @@ Returns **any**
 
 ### getContentTypeFromFilename
 
-[src/files.js:26-29](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/files.js#L26-L29 "Source code on GitHub")
+[src/files.js:26-29](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/files.js#L26-L29 "Source code on GitHub")
 
 Return a content type from a filename, uses `mime`.
 
@@ -200,7 +206,7 @@ Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 
 ### getTypenameForFile
 
-[src/files.js:37-48](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/files.js#L37-L48 "Source code on GitHub")
+[src/files.js:37-48](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/files.js#L37-L48 "Source code on GitHub")
 
 Convert a content-type to a valid GraphQL scbema type
 
@@ -210,15 +216,27 @@ Convert a content-type to a valid GraphQL scbema type
 
 Returns **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Image, Video, Audio if content type matches, GenericFile otherwise
 
+### optimisticFileResponse
+
+[src/files.js:56-80](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/files.js#L56-L80 "Source code on GitHub")
+
+Returns an optimistic response for a File for instant display
+
+**Parameters**
+
+-   `file` **{contentType: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), name: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), url: [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)}** 
+
+Returns **any** 
+
 ### formValues
 
-[src/forms.js:7-9](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/forms.js#L7-L9 "Source code on GitHub")
+[src/forms.js:7-9](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/forms.js#L7-L9 "Source code on GitHub")
 
-Return values for `obj` ommiting `id` and `__typename`.
+Return values for `obj` omitting `id` and `__typename`.
 
 ### isEmpty
 
-[src/isEmpty.js:18-18](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/isEmpty.js#L18-L18 "Source code on GitHub")
+[src/isEmpty.js:18-18](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/isEmpty.js#L18-L18 "Source code on GitHub")
 
 -   **See: Ramda's isEmpty**
 
@@ -228,7 +246,7 @@ Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Sta
 
 ### isEmptyProp
 
-[src/isEmpty.js:24-26](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/isEmpty.js#L24-L26 "Source code on GitHub")
+[src/isEmpty.js:24-26](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/isEmpty.js#L24-L26 "Source code on GitHub")
 
 Returns whether a prop `isEmpty`
 
@@ -236,7 +254,7 @@ Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Sta
 
 ### isEmptyPath
 
-[src/isEmpty.js:32-34](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/isEmpty.js#L32-L34 "Source code on GitHub")
+[src/isEmpty.js:32-34](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/isEmpty.js#L32-L34 "Source code on GitHub")
 
 Returns whether the given Ramda path `isEmpty`
 
@@ -244,13 +262,93 @@ Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Sta
 
 ### isOptimistic
 
-[src/isOptimistic.js:14-14](https://github.com/blackxored/graphql-zealot/blob/af763d38dd86faac44a2aac0e9a6a2931690094c/src/isOptimistic.js#L14-L14 "Source code on GitHub")
+[src/isOptimistic.js:14-14](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/isOptimistic.js#L14-L14 "Source code on GitHub")
 
 Returns true is a given string is an UUID.
 
 UUIDs are commonly used to mark optimistic responses.
 
 Type: function ([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)): [boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)
+
+### addEdgeToMutationResult
+
+[src/mutations.js:18-25](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/mutations.js#L18-L25 "Source code on GitHub")
+
+Add edge to a mutation result
+
+Shape:
+{
+  edge: {
+    node: result
+  }
+}
+
+**Parameters**
+
+-   `response` **any** 
+
+Returns **{edge: {node: any}}** 
+
+### addEdgeAndCursorToMutationResult
+
+[src/mutations.js:35-46](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/mutations.js#L35-L46 "Source code on GitHub")
+
+Add both edge and cursor to a mutation result
+Cursor is calculated via `cursorForObjectInConnection`.
+
+Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
+
+**Parameters**
+
+-   `connectionGetter` **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** Function that returns a promise of a Connection of all records
+-   `obj` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** The current object
+
+### optimisticResponse
+
+[src/mutations.js:59-77](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/mutations.js#L59-L77 "Source code on GitHub")
+
+Generate an optimistic response
+
+Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
+
+**Parameters**
+
+-   `operationName` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the mutation that was run
+-   `payloadName` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** The name of the payload in the response object
+-   `response` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Partial response for the object that's to be returned by the server
+
+Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** function that takes variables and can be passed to Apollo's `optimisticResponse`
+
+### mapEdgesToProp
+
+[src/props.js:25-44](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/props.js#L25-L44 "Source code on GitHub")
+
+Map edges to prop
+
+Convert edges structure to an array of objects (nodes).
+
+Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
+
+**Parameters**
+
+-   `edgePath` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** A dot-path to the edges (e.g `viewer.user.favorites`, `edges` suffix is optional)
+-   `propName` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Name of the prop to map edges to
+
+Returns **[Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)** Function that takes a data object. mapEdgesToProp is curried so you can pass it directly.
+
+### flattenEdges
+
+[src/props.js:54-75](https://github.com/blackxored/graphql-zealot/blob/8168a755f9423c03f07aaeae5430a7936aa040d2/src/props.js#L54-L75 "Source code on GitHub")
+
+Flattens edges recursively
+
+Replaces edges structures with arrays of nodes.
+
+Type: [Function](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function)
+
+**Parameters**
+
+-   `connection` **Connection** 
 
 ## Developing
 

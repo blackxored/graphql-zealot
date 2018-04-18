@@ -3,6 +3,7 @@
   "version": "0.0.0-development",
   "description": "Utilities for the GraphQL warrior",
   "author": "Adrian Perez <adrian@adrianperez.org> (https://adrianperez.codes)",
+  "license": "MIT",
   "files": [
     "es",
     "lib",

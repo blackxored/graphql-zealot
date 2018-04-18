@@ -97,7 +97,8 @@
       "src/**/*.js",
       "!**/node_modules/**",
       "!**/vendor/**"
-    ]
+    ],
+    "collectCoverage": true
   },
   "lint-staged": {
     "*.js": [

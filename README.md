@@ -1,5 +1,7 @@
 # graphql-zealot
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/blackxored/graphql-zealot.svg)](https://greenkeeper.io/)
+
 > Utilities for the GraphQL warrior
 
 [![Semantically Released][semantic-release-badge]][semantic-release]

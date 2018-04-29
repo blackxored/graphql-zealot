@@ -85,7 +85,7 @@
     "prettier": "^1.8.1",
     "rimraf": "^2.6.2",
     "semantic-release": "^15.1.7",
-    "travis-deploy-once": "^4.4.1"
+    "travis-deploy-once": "^5.0.0"
   },
   "engines": {
     "node": ">= 8",

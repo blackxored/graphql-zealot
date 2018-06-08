@@ -48,7 +48,7 @@
     }
   },
   "dependencies": {
-    "graphql": "^0.13.2",
+    "graphql": "^14.0.0-rc.1",
     "graphql-relay": "https://github.com/blackxored/graphql-relay-js#rn-base64",
     "in-publish": "^2.0.0",
     "mime": "^2.3.1",

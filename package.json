@@ -67,7 +67,7 @@
     "babel-preset-flow": "^6.23.0",
     "babel-preset-stage-3": "^6.24.1",
     "commitizen": "^2.9.6",
-    "cross-env": "^5.1.4",
+    "cross-env": "^6.0.0",
     "documentation": "^7.0.0",
     "eslint": "^4.6.1",
     "eslint-config-airbnb-base": "^12.1.0",
